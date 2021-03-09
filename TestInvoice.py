@@ -23,3 +23,11 @@ def test_CanCalculateTotalDiscount(invoice, products):
 def test_CanCalculateTotalPurePrice(invoice, products):
     invoice.totalPurePrice(products)
     assert invoice.totalPurePrice(products) == 69.38
+
+def test_CanCountTotalProducts(invoice, products):
+    invoice.countTotalProducts(products)
+    assert invoice.countTotalProducts(products) == 15
+
+def test_AssertConsistency(invoice, products):
+    calculated_total = invoice.totalPurePrice(products) + invoice.totalDiscount(products)
+    assert calculated_total == invoice.totalImpurePrice(products)

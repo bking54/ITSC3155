@@ -8,12 +8,19 @@ class Invoice:
         self.items['unit_price'] = price
         self.items['discount'] = discount
         return self.items
+    
     def totalImpurePrice(self, products):
         total_impure_price = 0
         for k, v in products.items():
             total_impure_price += float(v['unit_price']) * int(v['qnt'])
         total_impure_price = round(total_impure_price, 2)
         return total_impure_price
+
+    def countTotalProducts(self, products):
+        total_products = 0
+        for k, v in products.items():
+            total_products += int(v['qnt'])
+        return total_products
 
     def totalDiscount(self, products):
         total_discount = 0
